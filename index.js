@@ -2,6 +2,9 @@ const inputEl = document.querySelector("input");
 const buttonEl = document.querySelector("button");
 const timerEl = document.querySelector("span");
 
+// переменная под таймер
+let intervalId;
+
 // Напишите реализацию createTimerAnimator
 // который будет анимировать timerEl
 const createTimerAnimator = () => {
@@ -23,7 +26,7 @@ const createTimerAnimator = () => {
       seconds--;
     };
     setTimerValue();
-    setInterval(setTimerValue, 1000);
+    intervalId = setInterval(setTimerValue, 1000);
   };
 };
 
@@ -37,6 +40,9 @@ inputEl.addEventListener("input", () => {
 
 buttonEl.addEventListener("click", () => {
   const seconds = Number(inputEl.value);
+
+  // Зачистка таймера
+  clearInterval(intervalId);
 
   animateTimer(seconds);
 
