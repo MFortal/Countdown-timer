@@ -24,6 +24,7 @@ const createTimerAnimator = () => {
 
       timerEl.innerHTML = `${timerHours}:${timerMinuts}:${timerSeconds}`;
       seconds--;
+      if (seconds < 0) clearInterval(intervalId);
     };
     setTimerValue();
     intervalId = setInterval(setTimerValue, 1000);
